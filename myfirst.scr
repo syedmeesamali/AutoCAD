@@ -1,1 +1,1 @@
-_.open "C:\Users\Cclgulf\Desktop\AutoCAD" _.circle 0,0,0,5 _.qsave _.close
+_.open "C:\Users\Cclgulf\Desktop\AutoCAD\Drawing1.dwg" _.circle 0,0,0,5 _.qsave _.close
