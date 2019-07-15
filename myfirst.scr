@@ -1,0 +1,1 @@
+_.open "C:\Users\Cclgulf\Desktop\AutoCAD" _.circle 0,0,0,5 _.qsave _.close
