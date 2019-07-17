@@ -1,2 +1,0 @@
-This is a text file for input to AutoCAD program
-This will be used for one program instance.

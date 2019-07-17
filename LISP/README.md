@@ -18,5 +18,3 @@ Some excellent resources on Visual-LISP programming:
 5. https://forums.autodesk.com/t5/autocad/ct-p/8
 
 6. http://www.arch-pub.com/lisp-for-text-insert-on-a-line_10813682.html
-
-7. http://www.lee-mac.com/steal.html
