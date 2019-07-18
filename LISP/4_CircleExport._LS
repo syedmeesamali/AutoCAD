@@ -1,23 +1,25 @@
 (defun c:CircleExport ()
-  (setq ss (ssget (list (cons 0 "CIRCLE")))) ;;Select Circles
-  (if ss
+  (setq sset (ssget '((-4 . "<OR")
+                                  (0 . "CIRCLE")
+                      (-4 . "OR>"))))
+  (if sset
     (progn
       (setq itm 0 num (sslength sset))
       (setq fn (getfiled "Point Export File" "" "txt" 1))
       (if (/= fn nil)
         (progn
           (setq fh (open fn "w"))
-          (while (< itm num) ;; while itm < num
-            (setq hnd (ssname ss itm))  ;; hnd is the name of each item
+          (while (< itm num)
+            (setq hnd (ssname sset itm))
             (setq ent (entget hnd))
             (setq obj (cdr (assoc 0 ent)))
             (cond 
               ((= obj "CIRCLE")
-                (setq pnt (cdr (assoc 40 ent))) ;; 10 is the code for circle center
+                (setq pnt (cdr (assoc 10 ent)))
                 (princ (strcat 
-                               (rtos pnt 2 2) " mm Dia." ) fh)
-
-			       ;;(rtos (cadr pnt) 2 2)) fh)
+                               (rtos (car  pnt) 2 8) ";"
+                               (rtos (cadr pnt) 2 8) ";"
+                               (rtos (caddr pnt) 2 8)) fh)
                 (princ "\n" fh)
               ) 
               (t nil)

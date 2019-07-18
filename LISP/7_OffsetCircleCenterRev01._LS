@@ -9,7 +9,7 @@
 )
 
 
-;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;; Start of Visual Lisp Activex objects
 (vl-load-com)
 
 (defun inserttable (lst pt / ht htc tab i j row tb acObj acDoc space)
@@ -22,7 +22,8 @@
         acDoc (vla-get-activedocument acObj)
         space (vlax-get acDoc (if (= 1 (getvar 'cvport)) 'PaperSpace 'ModelSpace))
   )
-
+  ;; Add table for later to be used for information output
+  
   (setq tab (vla-addtable space (vlax-3d-point pt) (length lst) (length (cadr lst)) (* 1.1 ht) (* 10.0 ht)  ))  ;;
   (vla-SetTextHeight tab 1 ht)
   (vla-SetTextHeight tab 2 ht)
@@ -58,7 +59,7 @@
  
   ;; make the list
   (setq lst (list
-    (list "Core#" "x" "y" "Radius")  ;; head
+    (list "Core #" "x-offset" "y-offset" "Radius")  ;; head
   ))
   (setq i 0)
   (repeat (sslength ss)
@@ -68,15 +69,15 @@
     (setq lst (append lst (list
       (list  
         (+ i 1)  ;; 1-based counter, Core#
-        (rtos (car ip) 2 2)  ;; 2 decimals, feel free to change this
-        (rtos (cadr ip) 2 2)
-        (rtos radi 2 2)
+        (rtos (car ip) 2 1)  ;; 2 decimals, feel free to change this
+        (rtos (cadr ip) 2 1)
+        (rtos (* radi 2.0) 2 2)
       )
     )))
     (Text
       (list (+ (nth 0 ip) radi) (- (nth 1 ip) radi) )
-      200
-      (strcat "Core " (itoa (+ i 1)))
+      240
+      (strcat " " (itoa (+ i 1)))
       160  ;; blue
     )
     (setq i (+ i 1))

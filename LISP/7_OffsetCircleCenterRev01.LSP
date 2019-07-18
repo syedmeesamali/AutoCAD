@@ -9,7 +9,7 @@
 )
 
 
-;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;; Start of Visual Lisp Activex objects
 (vl-load-com)
 
 (defun inserttable (lst pt / ht htc tab i j row tb acObj acDoc space)
@@ -22,7 +22,8 @@
         acDoc (vla-get-activedocument acObj)
         space (vlax-get acDoc (if (= 1 (getvar 'cvport)) 'PaperSpace 'ModelSpace))
   )
-
+  ;; Add table for later to be used for information output
+  
   (setq tab (vla-addtable space (vlax-3d-point pt) (length lst) (length (cadr lst)) (* 1.1 ht) (* 10.0 ht)  ))  ;;
   (vla-SetTextHeight tab 1 ht)
   (vla-SetTextHeight tab 2 ht)
@@ -42,7 +43,7 @@
     (setq i (+ i 1))
   )
   ;; default Autocad expects a totle row.  If the first row has more than 1 cel, let's unmerge this row
-  (if (> (length (nth 0 lst)) 1)
+  (if (> (length (nth 0 lst)) 1) ;; if length > 1 (for 0th element of lst)
     (vla-unMergeCells tab 0 0 0 0)
   )
   tab
@@ -68,9 +69,9 @@
     (setq lst (append lst (list
       (list  
         (+ i 1)  ;; 1-based counter, Core#
-        (rtos (car ip) 2 1)  ;; 2 decimals, feel free to change this
+        (rtos (car ip) 2 1)  ;; 1 decimals, feel free to change this
         (rtos (cadr ip) 2 1)
-        (rtos (* radi 2.0) 2 2)
+        (rtos (* radi 2.0) 2 2)  ;; radi * 2 means the diameter of each circle to be used
       )
     )))
     (Text
