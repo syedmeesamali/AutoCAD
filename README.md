@@ -15,3 +15,9 @@ Intermediate level:
 
 4_CircleExport: Export details of all the selected circles to a TXT file. 
 
+5_CircleOnVertices: Create circle on vertices of a polyline.
+
+Advanced level:
+---------------
+
+6_OffsetCircleCenter: Take offset for each circle from an origin. 
