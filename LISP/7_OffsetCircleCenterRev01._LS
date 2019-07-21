@@ -43,14 +43,14 @@
     (setq i (+ i 1))
   )
   ;; default Autocad expects a totle row.  If the first row has more than 1 cel, let's unmerge this row
-  (if (> (length (nth 0 lst)) 1)
+  (if (> (length (nth 0 lst)) 1) ;; if length > 1 (for 0th element of lst)
     (vla-unMergeCells tab 0 0 0 0)
   )
   tab
 )
 
 ;; Offset for each Circle Center
-(defun c:occ ( / lst ss bp pt i ip radi)
+(defun c:och1 ( / lst ss bp pt i ip radi)
   ;; select circles
   (princ "\nSelect circles then press enter: ")
   (setq ss (ssget (list (cons 0 "CIRCLE"))))
@@ -69,9 +69,49 @@
     (setq lst (append lst (list
       (list  
         (+ i 1)  ;; 1-based counter, Core#
-        (rtos (car ip) 2 1)  ;; 2 decimals, feel free to change this
+        (rtos (car ip) 2 1)  ;; 1 decimals, feel free to change this
         (rtos (cadr ip) 2 1)
-        (rtos (* radi 2.0) 2 2)
+        (rtos (* radi 2.0) 2 2)  ;; radi * 2 means the diameter of each circle to be used
+      )
+    )))
+    (Text
+      (list (+ (nth 0 ip) radi) (- (nth 1 ip) radi) )
+      240
+      (strcat " " (itoa (+ i 1)))
+      160  ;; blue
+    )
+    (setq i (+ i 1))
+  )
+  (inserttable lst pt)
+)
+
+
+(defun c:och2 ( / lst ss bp pt i ip radi)
+  ;; select circles
+  	(setq pt1 "0,33000,0") ;;Change the origin to suit the offset requirements
+	(command ".UCS" "Origin" pt1) ;;New Origin for the H2 part of drawings
+  (princ "\nSelect circles then press enter: ")
+  (setq ss (ssget (list (cons 0 "CIRCLE"))))
+  (setq bp (getpoint "\nBase point for offset: "))
+  (setq pt (getpoint "\nInsert point of the table: "))
+
+
+  
+  ;; make the list
+  (setq lst (list
+    (list "Core #" "x-offset" "y-offset" "Radius")  ;; head
+  ))
+  (setq i 0)
+  (repeat (sslength ss)
+    (setq ip (cdr (assoc 10 (entget (ssname ss i)))))    ;; circle center
+    (setq radi (cdr (assoc 40 (entget (ssname ss i)))))  ;; circle radius (so we know where to put the label)
+    ;; append the list
+    (setq lst (append lst (list
+      (list  
+        (+ i 1)  ;; 1-based counter, Core#
+        (rtos (car ip) 2 1)  ;; 1 decimals, feel free to change this
+        (rtos (cadr ip) 2 1)
+        (rtos (* radi 2.0) 2 2)  ;; radi * 2 means the diameter of each circle to be used
       )
     )))
     (Text

@@ -1,2 +1,2 @@
-(vl-load-com)
-((entmake '((0 . "CIRCLE") (10 500.0 0.0 0.0) (40 . 600)))
+(setq pt1 "0,-33000,0")
+(command ".UCS" "Origin" pt1)
