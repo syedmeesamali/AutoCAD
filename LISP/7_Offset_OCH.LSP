@@ -74,7 +74,7 @@
         (rtos (* radi 2.0) 2 2)  ;; radi * 2 means the diameter of each circle to be used
       )
     )))
-    (setq bb (getpoint "\nJust for a pause: "))
+    ;(setq bb (getpoint "\nJust for a pause: "))
     (Text
       (list (+ (nth 0 ip) radi) (- (nth 1 ip) radi) )
       270
