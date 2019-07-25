@@ -121,7 +121,7 @@
 ;; Offset for each Circle Center
 (defun c:occ ( / lst startnumber ss ss_sorted bp pt i ip radi)
   ;; select circles
-  (setq zoomlevel 70)
+  ;(setq zoomlevel 70)
   (princ "\nSelect circles then press enter: ")
   (setq ss (ssget (list (cons 8 "Cores") (cons 0 "CIRCLE"))))
  
@@ -147,9 +147,9 @@
         (rtos (* radi 2.0) 2 2)
       )
     )))
-    (setq bb (getpoint "\nPause so you can see numbering. Press any key to continue.. "))
-    (command "ZOOM" "OBject" ip "")
-    (command "ZOOM" zoomlevel)
+    ;(setq bb (getpoint "\nPause so you can see numbering. Press any key to continue.. "))
+    ;(command "ZOOM" "OBject" ip "")
+    ;(command "ZOOM" zoomlevel)
     (Text
       (list (+ (nth 0 ip) (* 2. radi)) (- (nth 1 ip) radi) )
       300

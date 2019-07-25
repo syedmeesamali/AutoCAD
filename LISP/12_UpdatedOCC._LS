@@ -8,7 +8,6 @@
                  (cons 1  str)))
 )
 
-
 ;;;;;;;;;;;;;;;;;;;
 (vl-load-com)
 
@@ -94,7 +93,6 @@
 )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
 (defun sort_ss_by_xy (ss xOry / i j data item ip)
  
   (setq i 0)
@@ -123,19 +121,18 @@
 ;; Offset for each Circle Center
 (defun c:occ ( / lst startnumber ss ss_sorted bp pt i ip radi)
   ;; select circles
+  (setq zoomlevel 70)
   (princ "\nSelect circles then press enter: ")
   (setq ss (ssget (list (cons 8 "Cores") (cons 0 "CIRCLE"))))
  
   (setq ss (sort_ss_by_xy ss "x"))
- 
-  (setq bp (getpoint "\nBase point for offset: "))
   (setq pt (getpoint "\nInsert point of the table: "))
  
   (setq startnumber (getint "\nStart Number: "))
- 
+  
   ;; make the list
   (setq lst (list
-    (list "Core#" "x" "y" "Radius")  ;; head
+    (list "Core #" "x" "y" "Dia. (mm)")  ;; head
   ))
   (setq i 0)
   (repeat (sslength ss)
@@ -147,9 +144,12 @@
         (+ i startnumber )  ;; counter, starting with user set start number
         (rtos (car ip) 2 2)  ;; 2 decimals, feel free to change this
         (rtos (cadr ip) 2 2)
-        (rtos radi 2 2)
+        (rtos (* radi 2.0) 2 2)
       )
     )))
+    (setq bb (getpoint "\nPause so you can see numbering. Press any key to continue.. "))
+    (command "ZOOM" "OBject" ip "")
+    (command "ZOOM" zoomlevel)
     (Text
       (list (+ (nth 0 ip) (* 2. radi)) (- (nth 1 ip) radi) )
       300
