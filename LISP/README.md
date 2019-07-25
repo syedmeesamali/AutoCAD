@@ -1,20 +1,29 @@
-# AutoCAD
-AutoCAD 2D and 3D
+# LISP Routins
 
-This repo is for various AutoCAD drawings both 2D and 3D that I work from time to time. Though some work is highly professional but I don't mind anyone copying or distributing keeping the due respect for original work. 
+Explanation of various lisp routines in this folder.
 
-To start Visual-LISP in it's own IDE type "VLIDE" in the command window (within AutoCAD program) and it will bring up the Visual LISP editor. (LISP: List Programming)
+Beginner level:
+---------------
+1_RoomArea: Calculates area of a room. Starting point for LISP (List Programming)
 
-Some excellent resources on Visual-LISP programming:
+2_PointsDistance: Calculates distance between two points in plain AutoLISP.
 
-1. https://www.afralisp.net/index.php
 
-2. http://www.jefferypsanders.com/autolisp.html
+Intermediate level:
+---------------
+3_Rad Counts: Count circles of same radius type (size)
 
-3. https://frfly.wordpress.com/2019/01/26/turtle-basic-2019/
+4_CircleExport: Export details of all the selected circles to a TXT file. 
 
-4. https://www.cadtutor.net/forum/
+5_CircleOnVertices: Create circle on vertices of a polyline.
 
-5. https://forums.autodesk.com/t5/autocad/ct-p/8
+Advanced level:
+---------------
 
-6. http://www.arch-pub.com/lisp-for-text-insert-on-a-line_10813682.html
+6_OffsetCircleCenter: Take offset for each circle from an origin. 
+
+7_Offset_OCH:   This program will take offsets for each core and provide the x,y coordinates from origin in the form of a table. Numbering of cores will also be done (not in a sequence)
+
+11_TLC: This program selects the items in a list in sequential way so they can be modified or updated as per requirements. 
+
+12_UpdatedOCC: This is the final more advanced version of core NUMBERING in a sequential manner (starting with x-values from lower left) and then provide a table with x,y values for each core from origin (i.e. 0,0). It can also number the cores starting from any number (i.e. any arbitrary number)
