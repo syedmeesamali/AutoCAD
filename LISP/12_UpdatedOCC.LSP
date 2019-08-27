@@ -122,7 +122,7 @@
 (defun c:occ ( / lst startnumber ss ss_sorted bp pt i ip radi)
   ;; select circles
   ;(setq zoomlevel 70)
-  (princ "\nSelect circles then press enter: ")
+  (princ "\nSelect circles then press enter (should be on layer with name 'Cores'): ")
   (setq ss (ssget (list (cons 8 "Cores") (cons 0 "CIRCLE"))))
  
   (setq ss (sort_ss_by_xy ss "x"))
