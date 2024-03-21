@@ -19,3 +19,8 @@ Some excellent resources on Visual-LISP programming:
 5. https://forums.autodesk.com/t5/autocad/ct-p/8
 
 6. http://www.arch-pub.com/lisp-for-text-insert-on-a-line_10813682.html
+
+## Revit LT
+
+1. Revit course from "Linkedin Learning" at below link: 
+https://www.linkedin.com/learning/revit-lt-2022-essential-training
