@@ -1,6 +1,6 @@
 # AutoCAD (2D and 3D)
 ## Repo Details
-- This repo is for all the CAD designs made in AutoCAD or SolidWorks.
+- This repo is for all the CAD designs made in AutoCAD, SolidWorks, Rhino or Revit (LT / 2026)
 - For AutoCAD LISP is the automation option.
 - To start Visual-LISP in it's own IDE type "VLIDE" in the command window (within AutoCAD program) and it will bring up the Visual LISP editor. (LISP: List Programming)
 
@@ -22,5 +22,10 @@ Some excellent resources on Visual-LISP programming:
 
 ## Revit LT
 
-1. Revit course from "Linkedin Learning" at below link: 
+1. Revit course from "Linkedin Learning" at: 
 https://www.linkedin.com/learning/revit-lt-2022-essential-training
+
+## Rhino 3D
+
+1. Amazing Rhino 3D course from LinkedIn Learning:
+https://www.linkedin.com/learning/rhino-7-essential-training/lines-and-polylines
